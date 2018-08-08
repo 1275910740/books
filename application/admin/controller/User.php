@@ -98,6 +98,7 @@ class User extends AdminBase
                 $user->id       = $id;
                 $user->username = $data['username'];
                 $user->mobile   = $data['mobile'];
+                $user->level    = $data['level'];
                 $user->email    = $data['email'];
                 $user->status   = $data['status'];
                 if (!empty($data['password']) && !empty($data['confirm_password'])) {

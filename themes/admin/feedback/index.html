@@ -1,0 +1,47 @@
+{extend name="base" /}
+{block name="body"}
+<div class="layui-body">
+    <!--tab标签-->
+    <div class="layui-tab layui-tab-brief">
+        <ul class="layui-tab-title">
+            <li class="layui-this">用户反馈</li>
+            <!--<a href="{:url('admin/category/add')}">添加栏目</a></li> -->
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <table class="layui-table">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px;">ID</th>
+                        <th style="width: 60px;">用户名称</th>
+                        <th>用户头像</th>
+                        <th>内容</th>
+                        <th>反馈图片</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach name="category_level_list" item="vo"}
+                    <tr>
+                        <td>{$vo.id}</td>
+                     {foreach name="vo.user" item="voo"}  
+                        {if condition="is_array($voo)"}
+                         <td>{$voo.nick_name}</td>
+                         <td><img style="width:40px;" src="{$voo.face}" alt=""></td>
+                        {/if}
+                     {/foreach}
+                        <td>{$vo.text}</td>
+                        <td>{$vo.imagepath}</td>
+                        <td>
+                            <!-- <a href="{:url('admin/category/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a> -->
+                            <a href="{:url('admin/Feedback/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{/block}

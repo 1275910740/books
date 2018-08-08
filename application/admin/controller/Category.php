@@ -22,7 +22,9 @@ class Category extends AdminBase
         parent::_initialize();
         $this->category_model = new CategoryModel();
         $this->article_model  = new ArticleModel();
-        $category_level_list  = $this->category_model->getLevelList();
+       
+         $category_level_list = Db::name('category')->select();
+
 
         $this->assign('category_level_list', $category_level_list);
     }
@@ -41,9 +43,9 @@ class Category extends AdminBase
      * @param string $pid
      * @return mixed
      */
-    public function add($pid = '')
+    public function add()
     {
-        return $this->fetch('add', ['pid' => $pid]);
+        return $this->fetch();
     }
 
     /**
@@ -74,7 +76,8 @@ class Category extends AdminBase
      */
     public function edit($id)
     {
-        $category = $this->category_model->find($id);
+
+        $category = Db::name('category')->find($id);
 
         return $this->fetch('edit', ['category' => $category]);
     }
@@ -92,10 +95,6 @@ class Category extends AdminBase
             if ($validate_result !== true) {
                 $this->error($validate_result);
             } else {
-                $children = $this->category_model->where(['path' => ['like', "%,{$id},%"]])->column('id');
-                if (in_array($data['pid'], $children)) {
-                    $this->error('不能移动到自己的子分类');
-                } else {
                     if ($this->category_model->allowField(true)->save($data, $id) !== false) {
                         $this->success('更新成功');
                     } else {
@@ -103,7 +102,6 @@ class Category extends AdminBase
                     }
                 }
             }
-        }
     }
 
     /**
@@ -126,5 +124,26 @@ class Category extends AdminBase
         } else {
             $this->error('删除失败');
         }
+    }
+    public function jiekou(){
+
+            $data = array ('rdid ' => '002010900002','doPage '=>'true','pageSize '=>10,'toPage '=>4);
+            $data = http_build_query($data);
+
+            $opts = array (
+            'http' => array (
+            'method' => 'POST',
+            'header'=> "Content-type: application/x-www-form-urlencodedrn".
+            "Content-Length: " . strlen($data) . "rn",
+            'content' => $data
+            )
+            );
+
+            $context = stream_context_create($opts);
+            
+            $html = file_get_contents('http://183.61.108.206:8088/opac/webservice/loanWebservice?wsdl', false, $context);
+dump($html);
+            die;
+            echo $html;
     }
 }

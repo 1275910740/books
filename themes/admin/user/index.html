@@ -4,8 +4,8 @@
     <!--tab标签-->
     <div class="layui-tab layui-tab-brief">
         <ul class="layui-tab-title">
-            <li class="layui-this">用户管理</li>
-            <li class=""><a href="{:url('admin/user/add')}">添加用户</a></li>
+            <li class="layui-this">馆员管理</li>
+            <li class=""><a href="{:url('admin/user/add')}">添加馆员</a></li>
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
@@ -31,6 +31,7 @@
                         <th>手机</th>
                         <th>邮箱</th>
                         <th>状态</th>
+                        <th>级别</th>
                         <th>创建时间</th>
                         <th>最后登录时间</th>
                         <th>最后登录IP</th>
@@ -45,6 +46,7 @@
                         <td>{$vo.mobile}</td>
                         <td>{$vo.email}</td>
                         <td>{php}echo $vo['status']==1 ? '启用' : '禁用';{/php}</td>
+                        <td>{php}echo $vo['level']==0 ? '市级别' : '乡镇级别';{/php}</td>
                         <td>{$vo.create_time}</td>
                         <td>{$vo.last_login_time}</td>
                         <td>{$vo.last_login_ip}</td>

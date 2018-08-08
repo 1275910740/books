@@ -20,9 +20,6 @@ class Article extends AdminBase
         parent::_initialize();
         $this->article_model  = new ArticleModel();
         $this->category_model = new CategoryModel();
-
-        $category_level_list = $this->category_model->getLevelList();
-        $this->assign('category_level_list', $category_level_list);
     }
 
     /**

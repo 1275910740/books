@@ -10,17 +10,7 @@
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
                 <form class="layui-form form-container" action="{:url('admin/category/save')}" method="post">
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">上级栏目</label>
-                        <div class="layui-input-block">
-                            <select name="pid" lay-verify="required">
-                                <option value="0">一级栏目</option>
-                                {foreach name="category_level_list" item="vo"}
-                                <option value="{$vo.id}" {if condition="$pid==$vo.id"} selected="selected"{/if}>{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</option>
-                                {/foreach}
-                            </select>
-                        </div>
-                    </div>
+                    
                     <div class="layui-form-item">
                         <label class="layui-form-label">栏目名称</label>
                         <div class="layui-input-block">
@@ -28,17 +18,13 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">别名</label>
+                        <label class="layui-form-label">链接地址</label>
                         <div class="layui-input-block">
-                            <input type="text" name="alias" value="" placeholder="（选填）请输入栏目别名" class="layui-input">
+                            <input type="text" name="path" value="" required  lay-verify="required" placeholder="请输入链接地址" class="layui-input">
                         </div>
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">图标</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="icon" value="" placeholder="（选填）如：fa fa-home" class="layui-input">
-                        </div>
-                    </div>
+                   
+                   
                     <div class="layui-form-item">
                         <label class="layui-form-label">缩略图</label>
                         <div class="layui-input-block">
@@ -47,36 +33,16 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">内容</label>
-                        <div class="layui-input-block">
-                            <textarea name="content" placeholder="" class="layui-textarea" id="content"></textarea>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">类型</label>
-                        <div class="layui-input-block">
-                            <select name="type" lay-verify="required">
-                                <option value="1">列表</option>
-                                <option value="2">单页</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">列表模板</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="list_template" value="" placeholder="（选填）请输入模板文件名" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">详情模板</label>
-                        <div class="layui-input-block">
-                            <input type="text" name="detail_template" value="" placeholder="（选填）请输入模板文件名" class="layui-input">
-                        </div>
-                    </div>
-                    <div class="layui-form-item">
                         <label class="layui-form-label">排序</label>
                         <div class="layui-input-block">
                             <input type="text" name="sort" value="0" required  lay-verify="required" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">状态</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="status" value="1" title="上架" checked="checked"><div class="layui-unselect layui-form-radio layui-form-radioed"><i class="layui-anim layui-icon"></i><span>上架</span></div>
+                            <input type="radio" name="status" value="0" title="下架"><div class="layui-unselect layui-form-radio"><i class="layui-anim layui-icon"></i><span>下架</span></div>
                         </div>
                     </div>
                     <div class="layui-form-item">

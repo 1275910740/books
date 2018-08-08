@@ -1,43 +1,39 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "786db149f3fc0327c3d1eb9670d10cae",
     "packages": [
         {
             "name": "topthink/framework",
-            "version": "v5.0.7",
+            "version": "v5.1.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/framework.git",
-                "reference": "bcf64f19f4fadbff6c8503891689ff7e6f2fe9a3"
+                "reference": "e670467e24399c98581db1b1d39191848f3e6b4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/top-think/framework/bcf64f19f4fadbff6c8503891689ff7e6f2fe9a3.zip",
-                "reference": "bcf64f19f4fadbff6c8503891689ff7e6f2fe9a3",
+                "url": "https://api.github.com/repos/top-think/framework/zipball/e670467e24399c98581db1b1d39191848f3e6b4d",
+                "reference": "e670467e24399c98581db1b1d39191848f3e6b4d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0",
-                "topthink/think-installer": "~1.0"
+                "php": ">=5.6.0",
+                "topthink/think-installer": "2.*"
             },
             "require-dev": {
                 "johnkary/phpunit-speedtrap": "^1.0",
                 "mikey179/vfsstream": "~1.6",
                 "phpdocumentor/reflection-docblock": "^2.0",
                 "phploc/phploc": "2.*",
-                "phpunit/phpunit": "4.8.*",
-                "sebastian/phpcpd": "2.*"
+                "phpunit/phpunit": "^5.0|^6.0",
+                "sebastian/phpcpd": "2.*",
+                "squizlabs/php_codesniffer": "2.*"
             },
             "type": "think-framework",
-            "autoload": {
-                "psr-4": {
-                    "think\\": "library/think"
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
@@ -46,6 +42,10 @@
                 {
                     "name": "liu21st",
                     "email": "liu21st@gmail.com"
+                },
+                {
+                    "name": "yunwuxin",
+                    "email": "448901948@qq.com"
                 }
             ],
             "description": "the new thinkphp framework",
@@ -55,7 +55,7 @@
                 "orm",
                 "thinkphp"
             ],
-            "time": "2017-02-25T02:51:57+00:00"
+            "time": "2018-08-02T09:17:04+00:00"
         },
         {
             "name": "topthink/think-captcha",
@@ -67,7 +67,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/top-think/think-captcha/0c55455df26a1626a60d0dc35d2d89002b741d44.zip",
+                "url": "https://api.github.com/repos/top-think/think-captcha/zipball/0c55455df26a1626a60d0dc35d2d89002b741d44",
                 "reference": "0c55455df26a1626a60d0dc35d2d89002b741d44",
                 "shasum": ""
             },
@@ -95,16 +95,16 @@
         },
         {
             "name": "topthink/think-installer",
-            "version": "v1.0.11",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/think-installer.git",
-                "reference": "4c6e1ebecd1afce3f4ccc47e147d61bbe1bf641d"
+                "reference": "f5400a12c60e513911aef41fe443fa6920952675"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/top-think/think-installer/4c6e1ebecd1afce3f4ccc47e147d61bbe1bf641d.zip",
-                "reference": "4c6e1ebecd1afce3f4ccc47e147d61bbe1bf641d",
+                "url": "https://api.github.com/repos/top-think/think-installer/zipball/f5400a12c60e513911aef41fe443fa6920952675",
+                "reference": "f5400a12c60e513911aef41fe443fa6920952675",
                 "shasum": ""
             },
             "require": {
@@ -132,7 +132,7 @@
                     "email": "448901948@qq.com"
                 }
             ],
-            "time": "2016-12-01T09:08:45+00:00"
+            "time": "2018-05-11T06:45:42+00:00"
         }
     ],
     "packages-dev": [],

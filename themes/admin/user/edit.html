@@ -4,9 +4,9 @@
     <!--tab标签-->
     <div class="layui-tab layui-tab-brief">
         <ul class="layui-tab-title">
-            <li class=""><a href="{:url('admin/user/index')}">用户管理</a></li>
-            <li class=""><a href="{:url('admin/user/add')}">添加用户</a></li>
-            <li class="layui-this">编辑用户</li>
+            <li class=""><a href="{:url('admin/user/index')}">馆员管理</a></li>
+            <li class=""><a href="{:url('admin/user/add')}">添加馆员</a></li>
+            <li class="layui-this">编辑馆员</li>
         </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
@@ -27,6 +27,17 @@
                         <label class="layui-form-label">重复密码</label>
                         <div class="layui-input-block">
                             <input type="password" name="confirm_password" value="" placeholder="（选填）如不修改则留空" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">账号级别</label>
+                        <div class="layui-input-block">
+                          <select name="level" lay-verify="required">
+                            <option value=""></option>
+
+                            <option value="0" {if condition="$user.level== 0"} selected="selected"{/if}>市级别账号</option>
+                            <option value="1" {if condition="$user.level== 1"} selected="selected"{/if}>乡镇级别账号</option>
+                          </select>
                         </div>
                     </div>
                     <div class="layui-form-item">

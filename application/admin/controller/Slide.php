@@ -13,6 +13,7 @@ use think\Db;
  */
 class Slide extends AdminBase
 {
+    const IMGS_URL = 'https://cs.mendian51.cn/attachs/jiaju/';
 
     protected function _initialize()
     {
@@ -48,6 +49,7 @@ class Slide extends AdminBase
      */
     public function save()
     {
+       
         if ($this->request->isPost()) {
             $data            = $this->request->param();
             $validate_result = $this->validate($data, 'Slide');

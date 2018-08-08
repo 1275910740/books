@@ -15,6 +15,7 @@
                         <th style="width: 30px;">ID</th>
                         <th style="width: 30px;">排序</th>
                         <th>栏目名称</th>
+                        <th>状态</th>
                         <th>操作</th>
                     </tr>
                     </thead>
@@ -23,9 +24,9 @@
                     <tr>
                         <td>{$vo.id}</td>
                         <td>{$vo.sort}</td>
-                        <td>{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</td>
+                        <td>{$vo.name}</td>
+                        <td>{php}echo $vo['status'] ? '上架' : '下架';{/php}</td>
                         <td>
-                            <a href="{:url('admin/category/add',['pid'=>$vo['id']])}" class="layui-btn layui-btn-mini">添加子栏目</a>
                             <a href="{:url('admin/category/edit',['id'=>$vo['id']])}" class="layui-btn layui-btn-normal layui-btn-mini">编辑</a>
                             <a href="{:url('admin/category/delete',['id'=>$vo['id']])}" class="layui-btn layui-btn-danger layui-btn-mini ajax-delete">删除</a>
                         </td>

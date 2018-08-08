@@ -90,7 +90,7 @@ class Auth
         'auth_type'         => 1, // 认证方式，1为实时认证；2为登录认证。
         'auth_group'        => 'auth_group', // 用户组数据表名
         'auth_group_access' => 'auth_group_access', // 用户-用户组关系表
-        'auth_rule'         => 'auth_rule', // 权限规则表
+        'auth_rule'         => 'as_auth_rule', // 权限规则表
         'auth_user'         => 'member', // 用户信息表
     ];
 
@@ -237,6 +237,7 @@ class Auth
             'type' => $type
         ];
         //读取用户组所有权限规则
+
         $rules = Db::name($this->config['auth_rule'])->where($map)->field('condition,name')->select();
         //循环规则，判断结果。
         $authList = []; //
@@ -246,6 +247,8 @@ class Auth
                 $user    = $this->getUserInfo($uid); //获取用户信息,一维数组
                 $command = preg_replace('/\{(\w*?)\}/', '$user[\'\\1\']', $rule['condition']);
                 @(eval('$condition=(' . $command . ');'));
+
+
                 if ($condition) {
                     $authList[] = strtolower($rule['name']);
                 }

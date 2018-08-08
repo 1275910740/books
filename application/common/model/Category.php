@@ -8,44 +8,6 @@ class Category extends Model
 {
     protected $insert = ['create_time'];
 
-    protected static function init()
-    {
-        parent::init();
-
-        self::event('after_insert', function ($category) {
-            $pid = $category->pid;
-            if ($pid > 0) {
-                $parent         = self::get($pid);
-                $category->path = $parent->path . $pid . ',';
-            } else {
-                $category->path = 0 . ',';
-            }
-
-            $category->save();
-        });
-
-        self::event('after_update', function ($category) {
-            $id   = $category->id;
-            $pid  = $category->pid;
-            $data = [];
-
-            if ($pid == 0) {
-                $data['path'] = 0 . ',';
-            } else {
-                $parent       = self::get($pid);
-                $data['path'] = $parent->path . $pid . ',';
-            }
-
-            if ($category->where('id', $id)->update($data) !== false) {
-                $children = self::all(['path' => ['like', "%{$id},%"]]);
-                foreach ($children as $value) {
-                    $value->path = $data['path'] . $id . ',';
-                    $value->save();
-                }
-            }
-        });
-    }
-
     /**
      * 反转义HTML实体标签
      * @param $value

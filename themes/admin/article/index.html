@@ -10,17 +10,7 @@
         <div class="layui-tab-content">
 
             <form class="layui-form layui-form-pane" action="{:url('admin/article/index')}" method="get">
-                <div class="layui-inline">
-                    <label class="layui-form-label">分类</label>
-                    <div class="layui-input-inline">
-                        <select name="cid">
-                            <option value="0">全部</option>
-                            {foreach name="category_level_list" item="vo"}
-                            <option value="{$vo.id}" {if condition="$cid==$vo.id"} selected="selected"{/if}>{neq name="vo.level" value="1"}|{php}for($i=1;$i<$vo['level'];$i++){echo ' ----';}{/php}{/neq} {$vo.name}</option>
-                            {/foreach}
-                        </select>
-                    </div>
-                </div>
+                
                 <div class="layui-inline">
                     <label class="layui-form-label">关键词</label>
                     <div class="layui-input-inline">
@@ -60,7 +50,7 @@
                             <td>{$vo.id}</td>
                             <td>{$vo.sort}</td>
                             <td>{$vo.title}</td>
-                            <td>{$category_list[$vo['cid']]}</td>
+                            <td></td>
                             <td>{$vo.author}</td>
                             <td>{$vo.reading}</td>
                             <td>{php}echo $vo['status']==1 ? '已审核' : '未审核';{/php}</td>
