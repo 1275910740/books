@@ -11,6 +11,18 @@
             <div class="layui-tab-item layui-show">
                 <form class="layui-form form-container" action="{:url('admin/article/save')}" method="post">
                     <div class="layui-form-item">
+                    <label class="layui-form-label">所属栏目</label>
+                        <div class="layui-input-block">
+                          <select name="cid" lay-verify="required">
+                            <option value=""></option>
+                           {foreach name="type" item="vo"}
+                            <option value="{$vo.id}">{$vo.name}</option>
+                            {/foreach}
+                          </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
                         <label class="layui-form-label">标题</label>
                         <div class="layui-input-block">
                             <input type="text" name="title" value="" required  lay-verify="required" placeholder="请输入标题" class="layui-input">

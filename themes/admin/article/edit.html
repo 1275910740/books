@@ -11,7 +11,17 @@
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
                 <form class="layui-form form-container" action="{:url('admin/article/update')}" method="post">
-                    
+                    <div class="layui-form-item">
+                    <label class="layui-form-label">所属栏目</label>
+                        <div class="layui-input-block">
+                          <select name="cid" lay-verify="required">
+                            <option value=""></option>
+                           {foreach name="type" item="vo"}
+                            <option value="{$vo.id}" {if condition="$vo.id== $article.cid"} selected="selected"{/if}>{$vo.name}</option>
+                            {/foreach}
+                          </select>
+                        </div>
+                    </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">标题</label>
                         <div class="layui-input-block">

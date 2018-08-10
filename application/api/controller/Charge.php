@@ -19,17 +19,43 @@ class Charge extends Controller
      * 第四步：关闭curl资源  curl_close();
      */
     public function charge(){
+      header("Content-type:text/json;charset=utf-8");
+         $search = $this->request->param('serarch');
 
-         header('content-type:application/json;charset=utf8');
-     
-         $url="http://183.61.108.206:8088/opac/webservice/loanWebservice?wsdl&rdid=002010900002&doPage=true&pageSize=3&toPage=5";
-         
-        $html=file_get_contents($url);
+         $url='http://183.61.108.206:8088/opac/api/search?q=''.$search.''&searchWay=title&rows=10&page=2';
+       //$file_contents = file_get_content('http://183.61.108.206:8088/opac/api/search?q=php&searchWay=title&rows=10&page=1');
+         $json = $this->get_url($url);
+         $xml = simplexml_load_string($json,NULL,LIBXML_NOCDATA);
+         $array =json_decode(json_encode($xml),true);
+         echo '<pre>';
+         print_r($array);
+         echo '</pre>';/*
 
-         $sixml = simplexml_load_string($html);
+         $data = json_encode($array);
+          return $data;*/
+    }
+    public function borrow(){
+      header("Content-type:text/json;charset=utf-8");
+      $url = "http://183.61.108.206:8088/opac/webservice/loanWebservice?wsdl";
+      $json = $this->get_url($url);
+      $xml = simplexml_load_string($json,NULL,LIBXML_NOCDATA);
+             dump($xml);
+      die;
+      $array = json_decode(json_encode($xml),true);
+      print_r($array);
+    }
 
-         dump($sixml);
+
+    public function get_url($url){ 
+        $ch = curl_init(); 
+        curl_setopt($ch, CURLOPT_URL,$url); //设置访问的url地址 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); 
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);//不输出内容 
+        $result = curl_exec($ch); 
+        curl_close ($ch); 
+        return $result; 
+    }
     
-        
-    } 
+    
 }

@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>Open Source BMS</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="__JS__/layui/css/layui.css">
-    <link rel="stylesheet" href="__CSS__/admin.css">
+    <link rel="stylesheet" href="__ROOT__/public/static/js/layui/css/layui.css">
+    <link rel="stylesheet" href="__ROOT__/public/static/css/admin.css">
     <!--[if lt IE 9]>
     <script src="__JS__/html5shiv.min.js"></script>
     <script src="__JS__/respond.min.js"></script>
@@ -29,13 +29,7 @@
             <input type="password" name="password" required lay-verify="required" class="layui-input">
         </div>
     </div>
-    <div class="layui-form-item">
-        <label class="layui-form-label">验证码</label>
-        <div class="layui-input-block">
-            <input type="text" name="verify" required lay-verify="required" class="layui-input layui-input-inline">
-            <img src="{:captcha_src()}" alt="点击更换" title="点击更换" onclick="this.src='{:captcha_src()}?time='+Math.random()" class="captcha">
-        </div>
-    </div>
+    
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="*">登 录</button>
@@ -48,8 +42,8 @@
         current_controller: "admin/{$controller|default=''}/"
     };
 </script>
-<script src="__JS__/jquery.min.js"></script>
-<script src="__JS__/layui/lay/dest/layui.all.js"></script>
-<script src="__JS__/admin.js"></script>
+<script src="__ROOT__/public/static/js/jquery.min.js"></script>
+<script src="__ROOT__/public/static/js/layui/lay/dest/layui.all.js"></script>
+<script src="__ROOT__/public/static/js/admin.js"></script>
 </body>
 </html>

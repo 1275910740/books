@@ -45,6 +45,7 @@ class Article extends AdminBase
         }
 
         $article_list  = $this->article_model->field($field)->where($map)->order(['publish_time' => 'DESC'])->paginate(15, false, ['page' => $page]);
+
         $category_list = $this->category_model->column('name', 'id');
 
         return $this->fetch('index', ['article_list' => $article_list, 'category_list' => $category_list, 'cid' => $cid, 'keyword' => $keyword]);
@@ -56,6 +57,8 @@ class Article extends AdminBase
      */
     public function add()
     {
+        $type =  $this->category_model->select();
+        $this->assign('type',$type);
         return $this->fetch();
     }
 
@@ -88,7 +91,8 @@ class Article extends AdminBase
     public function edit($id)
     {
         $article = $this->article_model->find($id);
-
+        $type =  $this->category_model->select();
+        $this->assign('type',$type);
         return $this->fetch('edit', ['article' => $article]);
     }
 

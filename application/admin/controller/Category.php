@@ -51,11 +51,22 @@ class Category extends AdminBase
     /**
      * 保存栏目
      */
+
     public function save()
     {
         if ($this->request->isPost()) {
             $data            = $this->request->param();
             $validate_result = $this->validate($data, 'Category');
+            $file = request()->file('file');
+             // 移动到框架应用根目录/public/uploads/ 目录下
+            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+            if($info){
+             $path =  $info->getExtension();
+                // 成功上传后 返回上传信息
+              return json(array('state'=>1,'path'=>$path));
+            }else{
+              return json(array('state'=>0,'errmsg'=>'上传失败'));
+            }
 
             if ($validate_result !== true) {
                 $this->error($validate_result);
